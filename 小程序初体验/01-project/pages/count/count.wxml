@@ -1,0 +1,7 @@
+<!--pages/count/count.wxml-->
+<view class="box">
+    <view>price：{{goods.price}}</view>
+    <view>nums：{{goods.nums}}</view>
+    <view>total：{{goods.price*goods.nums}}</view>
+    <button type="primary" bindtap="handleAddcount"> count++ </button>
+</view>
