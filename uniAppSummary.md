@@ -184,5 +184,22 @@ wxss：
 <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.duoduwang.com%2Fueditor%2Fphp%2Fupload%2Fimage%2F20200420%2F1587361598595117.jpg&refer=http%3A%2F%2Fwww.duoduwang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650848874&t=ee63576a610c5b875f21583b71c79495" />
 ```
 
+## 三、成员管理及发布流程
 
+### 3.1 成员管理
+
+<a href="https://mp.weixin.qq.com/" style="text-decoration:none">首页 - 成员管理</a>
+
+1. 管理员
+2. 项目成员
+3. 体验人员
+
+### 3.2 发布流程
+
+<a href="https://mp.weixin.qq.com/" style="text-decoration:none">首页 - 版本管理</a>
+
+1. 本地 - 开发版本
+2. 上传 - 体验版本
+3. 上传 - 审核版本
+4. 上传 - 线上版本
 
