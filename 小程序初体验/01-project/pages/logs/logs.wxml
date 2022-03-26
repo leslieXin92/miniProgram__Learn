@@ -1,6 +1,30 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:key="timeStamp" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log.date}}</text>
-  </block>
+<!-- view组件 -->
+<view class="viewFather" hover-class="press">
+	<view class="viewSon" hover-class="press" hover-stop-propagation />
 </view>
+
+<!-- scroll-view组件 -->
+<scroll-view class="scrollFather" scroll-y scroll-x>
+	<view class="scrollSon" />
+	<view class="scrollSon" />
+	<view class="scrollSon" />
+</scroll-view>
+
+<!-- swiper组件 -->
+<swiper class="swiperFather" autoplay indicator-dots>
+	<swiper-item class="swiperSon"> A </swiper-item>
+	<swiper-item class="swiperSon"> B </swiper-item>
+	<swiper-item class="swiperSon"> C </swiper-item>
+</swiper>
+
+<!-- text组件 -->
+<text> text </text>
+
+<!-- rich-text组件 -->
+<rich-text nodes="<ul> <li>1</li> <li>2</li> </ul>"> </rich-text>
+
+<!-- button组件 -->
+<button type="primary" plain> click </button>
+
+<!-- image标签 -->
+<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.duoduwang.com%2Fueditor%2Fphp%2Fupload%2Fimage%2F20200420%2F1587361598595117.jpg&refer=http%3A%2F%2Fwww.duoduwang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650848874&t=ee63576a610c5b875f21583b71c79495" />

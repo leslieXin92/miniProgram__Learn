@@ -1,8 +1,40 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+/* view组件 */
+.viewFather {
+	padding: 20px;
+	background-color: aqua;
 }
-.log-item {
-  margin: 10rpx;
+
+.viewSon {
+	height: 50px;
+	background-color: brown;
+}
+
+.press {
+	background-color: chartreuse;
+}
+
+/* scroll-view组件 */
+.scrollFather {
+	width: 200px;
+	height: 200px;
+	margin: 20px auto;
+	border: 3px solid red;
+}
+
+.scrollSon {
+	width: 300px;
+	height: 150px;
+	margin: 20px;
+	background-color: seagreen;
+}
+
+/* swiper组件 */
+.swiperFather {
+	border: 3px solid red;
+}
+
+.swiperSon {
+	text-align: center;
+	font-size: 30px;
+	background-color: royalblue;
 }
