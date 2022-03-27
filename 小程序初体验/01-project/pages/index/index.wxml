@@ -4,4 +4,5 @@
 	<button type="primary" bindtap="skipCount"> count+1 </button>
 	<button type="primary" bindtap="skipConditionalRender"> 条件渲染 </button>
 	<button type="primary" bindtap="skipListRender"> 列表渲染 </button>
+	<button type="primary" bindtap="skipDataRequest"> 网络请求 </button>
 </view>

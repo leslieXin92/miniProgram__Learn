@@ -188,7 +188,7 @@ wxss：
 
 ### 3.1 成员管理
 
-<a href="https://mp.weixin.qq.com/" style="text-decoration:none">首页 - 成员管理</a>
+网址：<a href="https://mp.weixin.qq.com/" style="text-decoration:none">首页 - 成员管理</a>
 
 1. 管理员
 2. 项目成员
@@ -196,7 +196,7 @@ wxss：
 
 ### 3.2 发布流程
 
-<a href="https://mp.weixin.qq.com/" style="text-decoration:none">首页 - 版本管理</a>
+网址：<a href="https://mp.weixin.qq.com/" style="text-decoration:none">首页 - 版本管理</a>
 
 1. 本地 - 开发版本
 2. 上传 - 体验版本
@@ -359,5 +359,99 @@ Page({
 })
 ```
 
+#### summary：
 
+1. 遍历：
 
+   ```html
+   <view wx:for="{{xxx}}"> </view>
+   ```
+
+2. 默认每一项为 item，key 为 index。
+
+3. 自定义 key：
+
+   直接写属性，不加双花括号。
+
+   ```html
+   <view wx:for="{{list}}" wx:key="id"> </view>
+   ```
+
+4. block 类似 vue 中的 template，不会渲染成 dom 节点。
+
+### 4.6 网络请求
+
+#### demo：
+
+wxml：
+
+```html
+<button type="primary" bindtap="handleGetRequest"> get请求 </button>
+<button type="primary" bindtap="handlePostRequest"> post请求 </button>
+<view class="get">
+    <view> get请求结果：</view>
+    <view> {{getRes}} </view>
+</view>
+<view class="post">
+    <view> get请求结果：</view>
+    <view> {{postRes}} </view>
+</view>
+```
+
+js：
+
+```javascript
+Page({
+    data: {
+        getRes: '',
+        postRes: ''
+    },
+    handleGetRequest() {
+        wx.request({
+            url: 'https://v2.alapi.cn/api/one',
+            method: 'GET',
+            data: {
+                token: 'LwExDtUWhF3rH5ib'
+            },
+            success: (res) => {
+                this.setData({
+                    getRes: res.data.data.title
+                })
+            }
+        })
+    },
+    handlePostRequest() {
+        wx.request({
+            url: 'https://v2.alapi.cn/api/one',
+            method: 'POST',
+            data: {
+                token: 'LwExDtUWhF3rH5ib'
+            },
+            success: (res) => {
+                this.setData({
+                    postRes: res.data.data.subtitle
+                })
+            }
+        })
+    }
+})
+```
+
+#### summary：
+
+1. 小程序中请求的限制：
+
+   1. 只能请求 https 协议的接口。
+   2. 必须将接口的域名添加到信任列表中。
+
+2. 解决方法：
+
+   1. 生产环境：更改协议为 https，并添加到信任列表。
+
+      网址：<a href="https://mp.weixin.qq.com/" style="text-decoration:none">开发管理 - 开发设置 - 服务器域名</a>
+
+   2. 开发环境：在微信开发者工具右上角的【详情 - 本地设置】中，勾选【不校验合法域名……】一项。
+
+3. 跨越问题：跨域问题主要是针对浏览器而言，而小程序的宿主环境是【微信小程序客户端】，所以小程序中不存在跨域问题。
+
+4. ajax 请求：ajax 依赖于浏览器提供的 XMLHttpRequest 对象，而小程序的宿主环境不是浏览器，所以小程序中的网络请求不是 ajax 请求。

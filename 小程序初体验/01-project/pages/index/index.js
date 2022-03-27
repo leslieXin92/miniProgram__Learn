@@ -24,5 +24,10 @@ Page({
     wx.navigateTo({
       url: '../listRender/listRender'
     })
+  },
+  skipDataRequest() {
+    wx.navigateTo({
+      url: '../networkRequest/networkRequest',
+    })
   }
 })

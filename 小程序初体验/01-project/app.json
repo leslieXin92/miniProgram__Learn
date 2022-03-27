@@ -4,7 +4,8 @@
         "pages/components/components",
         "pages/count/count",
         "pages/conditionalRender/conditionalRender",
-        "pages/listRender/listRender"
+        "pages/listRender/listRender",
+        "pages/networkRequest/networkRequest"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -1,0 +1,9 @@
+button {
+    margin: 20px 0;
+}
+
+.get,
+.post {
+    margin: 30px;
+    font-size: large;
+}

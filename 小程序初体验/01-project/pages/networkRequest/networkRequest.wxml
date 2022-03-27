@@ -1,0 +1,10 @@
+<button type="primary" bindtap="handleGetRequest"> get请求 </button>
+<button type="primary" bindtap="handlePostRequest"> post请求 </button>
+<view class="get">
+    <view> get请求结果：</view>
+    <view> {{getRes}} </view>
+</view>
+<view class="post">
+    <view> get请求结果：</view>
+    <view> {{postRes}} </view>
+</view>
