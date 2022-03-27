@@ -203,57 +203,9 @@ wxss：
 3. 上传 - 审核版本
 4. 上传 - 线上版本
 
-## 四、count++案例
+## 四、核心语法
 
-### demo：
-
-count.wxml：
-
-```html
-<view class="box">
-    <view> price：{{goods.price}} </view>
-    <view> nums：{{goods.nums}} </view>
-    <view> total：{{goods.price*goods.nums}} </view>
-    <button type="primary" bindtap="handleAddcount"> count+1 </button>
-    <button type="primary" data-step="5" bindtap="handleAdd5"> count+5 </button>
-    <view>
-        当前的数量为：
-        <input type="number" value="{{goods.nums}}" bindinput="handleInput" />
-    </view>
-</view>
-```
-
-count.js：
-
-```javascript
-Page({
-    data: {
-        goods: {
-            nums: 0,
-            price: 10
-        }
-    },
-    handleAddcount() {
-        this.setData({
-            'goods.nums': this.data.goods.nums + 1
-        })
-    },
-    handleAdd5(e) {
-        const step = parseInt(e.target.dataset.step)
-        this.setData({
-            'goods.nums': this.data.goods.nums + step
-        })
-    },
-    handleInput(e) {
-        const newVal = parseInt(e.detail.value)
-        this.setData({
-            'goods.nums': newVal
-        })
-    }
-})
-```
-
-### summary：
+### 4.1 基本语法
 
 1. js 中读取 data 中的值：
 
@@ -277,42 +229,99 @@ Page({
    <view bindtap="xxx"> click </view>
    ```
 
-4. 事件传参：
+### 4.2 事件传参
 
-   wxml：
+wxml：
 
-   ```html
-   <!-- 通过绑定data-xxx实现事件传参 -->
-   <view data-step="5" bindtap="add"> click </view>
-   ```
+```html
+<!-- 通过绑定data-xxx实现事件传参 -->
+<view data-step="5" bindtap="add"> click </view>
+```
 
-   js：
+js：
 
-   ```javascript
-   // 通过e.target.dataset.xxx实现接收参数
-   add(e){
-       const step = parseInt(e.target.dataset.step)
-       ......
-   }
-   ```
+```javascript
+// 通过e.target.dataset.xxx实现接收参数
+add(e){
+    const step = parseInt(e.target.dataset.step)
+    ......
+}
+```
 
-5. 双向绑定：
+### 4.3 双向绑定
 
-   wxml：
+wxml：
 
-   ```html
-   <input type="number" value="{{goods.nums}}" bindinput="handleInput" />
-   ```
+```html
+<input type="number" value="{{goods.nums}}" bindinput="handleInput" />
+```
 
-   js：
+js：
 
-   ```javascript
-   handleInput(e) {
-       const newVal = parseInt(e.detail.value)
-       this.setData({
-           'goods.nums': newVal
-       })
-   }
-   ```
+```javascript
+handleInput(e) {
+    const newVal = parseInt(e.detail.value)
+    this.setData({
+        'goods.nums': newVal
+    })
+}
+```
 
-   
+### 4.4 条件渲染
+
+#### demo：
+
+wxml：
+
+```html
+<view class="box">
+    <input type="number" value="{{count}}" bindinput="handleInput" />
+    <text> 成绩： </text>
+
+    <!-- 方式一：wx:if -->
+    <view>
+        <text wx:if="{{count<60}}"> 不及格 </text>
+        <text wx:elif="{{count>=60 && count<70}}"> 及格 </text>
+        <text wx:elif="{{count>=70 && count<80}}"> 一般 </text>
+        <text wx:elif="{{count>=80 && count<90}}"> 良好 </text>
+        <text wx:else> 优秀 </text>
+    </view>
+
+    <!-- 方式二：hidden -->
+    <view>
+        <text hidden="{{!(count<60)}}"> 不及格 </text>
+        <text hidden="{{!(count>=60 && count<70)}}"> 及格 </text>
+        <text hidden="{{!(count>=70 && count<80)}}"> 一般 </text>
+        <text hidden="{{!(count>=80 && count<90)}}"> 良好 </text>
+        <text hidden="{{!(count>=90)}}"> 优秀 </text>
+    </view>
+</view>
+```
+
+js：
+
+```javascript
+Page({
+    data: {
+        count: 0
+    },
+    handleInput(e) {
+        const newCount = parseInt(e.detail.value)
+        this.setData({
+            count: newCount
+        })
+    }
+})
+```
+
+#### summary：
+
+1. 当 wx:if 条件满足时进行渲染。
+2. 当 hidden 条件满足时进行隐藏。
+3. wx:if 有更高的切换功耗，hidden 有更高的初始渲染功耗。
+4. 频繁切换用 hidden，否则用 wx:if 。
+
+### 4.5 列表渲染
+
+
+

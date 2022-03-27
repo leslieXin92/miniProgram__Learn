@@ -15,4 +15,9 @@ Page({
       url: '../count/count'
     })
   },
+  skipConditionalRender() {
+    wx.navigateTo({
+      url: '../conditionalRender/conditionalRender'
+    })
+  }
 })

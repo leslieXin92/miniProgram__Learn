@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="box">
-	<button type="primary" bindtap="skipComponents">常用组件</button>
-	<button type="primary" bindtap="skipCount">count+1</button>
+	<button type="primary" bindtap="skipComponents"> 常用组件 </button>
+	<button type="primary" bindtap="skipCount"> count+1 </button>
+	<button type="primary" bindtap="skipConditionalRender"> 条件渲染 </button>
 </view>

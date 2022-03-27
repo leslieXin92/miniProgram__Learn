@@ -2,7 +2,8 @@
     "pages": [
         "pages/index/index",
         "pages/components/components",
-        "pages/count/count"
+        "pages/count/count",
+        "pages/conditionalRender/conditionalRender"
     ],
     "window": {
         "backgroundTextStyle": "light",
