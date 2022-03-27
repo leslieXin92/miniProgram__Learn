@@ -388,13 +388,24 @@ wxml：
 ```html
 <button type="primary" bindtap="handleGetRequest"> get请求 </button>
 <button type="primary" bindtap="handlePostRequest"> post请求 </button>
-<view class="get">
+<button type="primary" bindtap="handleAsyncRequest"> async请求 </button>
+
+<view class="resBox">
     <view> get请求结果：</view>
     <view> {{getRes}} </view>
 </view>
-<view class="post">
+
+<view class="resBox">
     <view> get请求结果：</view>
     <view> {{postRes}} </view>
+</view>
+
+<view class="resBox">
+    <view> async请求结果：</view>
+    <view> {{resA}} </view>
+    <view> {{resB}} </view>
+    <view> {{resC}} </view>
+    <view> {{resD}} </view>
 </view>
 ```
 
@@ -404,7 +415,11 @@ js：
 Page({
     data: {
         getRes: '',
-        postRes: ''
+        postRes: '',
+        resA: '',
+        resB: '',
+        resC: '',
+        resD: ''
     },
     handleGetRequest() {
         wx.request({
@@ -415,7 +430,7 @@ Page({
             },
             success: (res) => {
                 this.setData({
-                    getRes: res.data.data.title
+                    getRes: res?.data?.data?.title || res.data.code
                 })
             }
         })
@@ -429,9 +444,95 @@ Page({
             },
             success: (res) => {
                 this.setData({
-                    postRes: res.data.data.subtitle
+                    postRes: res?.data?.data?.subtitle || res.data.code
                 })
             }
+        })
+    },
+    async handleAsyncRequest() {
+        const resA = await this.a()
+        this.setData({
+            resA: resA.data.code
+        })
+        const resB = await this.b()
+        this.setData({
+            resB: resB.data.code + 1
+        })
+        const resC = await this.c()
+        this.setData({
+            resC: resC.data.code + 2
+        })
+        const resD = await this.d()
+        this.setData({
+            resD: resD.data.code + 3
+        })
+    },
+    a() {
+        return new Promise((resolve, reject) => {
+            wx.request({
+                url: 'https://v2.alapi.cn/api/one',
+                method: 'POST',
+                data: {
+                    token: 'LwExDtUWhF3rH5ib'
+                },
+                success: (res) => {
+                    resolve(res)
+                },
+                fail: (err) => {
+                    reject(err)
+                }
+            })
+        })
+    },
+    b() {
+        return new Promise((resolve, reject) => {
+            wx.request({
+                url: 'https://v2.alapi.cn/api/one',
+                method: 'POST',
+                data: {
+                    token: 'LwExDtUWhF3rH5ib'
+                },
+                success: (res) => {
+                    resolve(res)
+                },
+                fail: (err) => {
+                    reject(err)
+                }
+            })
+        })
+    },
+    c() {
+        return new Promise((resolve, reject) => {
+            wx.request({
+                url: 'https://v2.alapi.cn/api/one',
+                method: 'POST',
+                data: {
+                    token: 'LwExDtUWhF3rH5ib'
+                },
+                success: (res) => {
+                    resolve(res)
+                },
+                fail: (err) => {
+                    reject(err)
+                }
+            })
+        })
+    },
+    d() {
+        return new Promise((resolve, reject) => {
+            wx.request({
+                url: 'https://v2.alapi.cn/api/one',
+                method: 'POST',
+                data: {
+                    token: 'LwExDtUWhF3rH5ib'
+                },
+                success: (res) => {
+                    resolve(res)
+                },
+                fail: (err) => {
+                    reject(err)
+                }
+            })
         })
     }
 })
@@ -455,3 +556,8 @@ Page({
 3. 跨越问题：跨域问题主要是针对浏览器而言，而小程序的宿主环境是【微信小程序客户端】，所以小程序中不存在跨域问题。
 
 4. ajax 请求：ajax 依赖于浏览器提供的 XMLHttpRequest 对象，而小程序的宿主环境不是浏览器，所以小程序中的网络请求不是 ajax 请求。
+
+5. 微信小程序中使用 async + await：
+
+   1. 使用 Promise 封装 wx.request；
+   2. 使用 async 和 await 简化 Promise 操作。

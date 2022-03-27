@@ -2,8 +2,7 @@ button {
     margin: 20px 0;
 }
 
-.get,
-.post {
+.resBox {
     margin: 30px;
     font-size: large;
 }
