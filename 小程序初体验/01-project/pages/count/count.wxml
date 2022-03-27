@@ -1,7 +1,11 @@
-<!--pages/count/count.wxml-->
 <view class="box">
-    <view>price：{{goods.price}}</view>
-    <view>nums：{{goods.nums}}</view>
-    <view>total：{{goods.price*goods.nums}}</view>
-    <button type="primary" bindtap="handleAddcount"> count++ </button>
+    <view> price：{{goods.price}} </view>
+    <view> nums：{{goods.nums}} </view>
+    <view> total：{{goods.price*goods.nums}} </view>
+    <button type="primary" bindtap="handleAddcount"> count+1 </button>
+    <button type="primary" data-step="5" bindtap="handleAdd5"> count+5 </button>
+    <view>
+        当前的数量为：
+        <input type="number" value="{{goods.nums}}" bindinput="handleInput" />
+    </view>
 </view>

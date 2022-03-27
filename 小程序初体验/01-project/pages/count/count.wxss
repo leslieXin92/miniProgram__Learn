@@ -5,6 +5,13 @@
     align-items: center;
     justify-content: space-around;
     margin-top: 20px;
-    height: 200px;
+    height: 50vh;
     font-size: large;
+    /* background-color: royalblue; */
+}
+
+input {
+    height: 25px;
+    padding: 5px;
+    outline: 1px solid red;
 }

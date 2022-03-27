@@ -203,3 +203,116 @@ wxss：
 3. 上传 - 审核版本
 4. 上传 - 线上版本
 
+## 四、count++案例
+
+### demo：
+
+count.wxml：
+
+```html
+<view class="box">
+    <view> price：{{goods.price}} </view>
+    <view> nums：{{goods.nums}} </view>
+    <view> total：{{goods.price*goods.nums}} </view>
+    <button type="primary" bindtap="handleAddcount"> count+1 </button>
+    <button type="primary" data-step="5" bindtap="handleAdd5"> count+5 </button>
+    <view>
+        当前的数量为：
+        <input type="number" value="{{goods.nums}}" bindinput="handleInput" />
+    </view>
+</view>
+```
+
+count.js：
+
+```javascript
+Page({
+    data: {
+        goods: {
+            nums: 0,
+            price: 10
+        }
+    },
+    handleAddcount() {
+        this.setData({
+            'goods.nums': this.data.goods.nums + 1
+        })
+    },
+    handleAdd5(e) {
+        const step = parseInt(e.target.dataset.step)
+        this.setData({
+            'goods.nums': this.data.goods.nums + step
+        })
+    },
+    handleInput(e) {
+        const newVal = parseInt(e.detail.value)
+        this.setData({
+            'goods.nums': newVal
+        })
+    }
+})
+```
+
+### summary：
+
+1. js 中读取 data 中的值：
+
+   ```javascript
+   this.data.xxx
+   ```
+
+2. 修改 data 中的值：
+
+   ```javascript
+   this.setData({
+       xxx:aaa,
+       'xxx.xxx':bbb
+   })
+   ```
+
+3. 绑定 function：
+
+   ```html
+   <view bind:tap="xxx"> click </view>
+   <view bindtap="xxx"> click </view>
+   ```
+
+4. 事件传参：
+
+   wxml：
+
+   ```html
+   <!-- 通过绑定data-xxx实现事件传参 -->
+   <view data-step="5" bindtap="add"> click </view>
+   ```
+
+   js：
+
+   ```javascript
+   // 通过e.target.dataset.xxx实现接收参数
+   add(e){
+       const step = parseInt(e.target.dataset.step)
+       ......
+   }
+   ```
+
+5. 双向绑定：
+
+   wxml：
+
+   ```html
+   <input type="number" value="{{goods.nums}}" bindinput="handleInput" />
+   ```
+
+   js：
+
+   ```javascript
+   handleInput(e) {
+       const newVal = parseInt(e.detail.value)
+       this.setData({
+           'goods.nums': newVal
+       })
+   }
+   ```
+
+   
