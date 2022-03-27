@@ -19,5 +19,10 @@ Page({
     wx.navigateTo({
       url: '../conditionalRender/conditionalRender'
     })
+  },
+  skipListRender() {
+    wx.navigateTo({
+      url: '../listRender/listRender'
+    })
   }
 })

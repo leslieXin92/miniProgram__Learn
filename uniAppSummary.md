@@ -323,5 +323,41 @@ Page({
 
 ### 4.5 列表渲染
 
+#### demo：
+
+wxml：
+
+```html
+<view>
+    <block wx:for="{{list}}" wx:key="id">
+        <text> index：{{index}} </text>
+        <text> id：{{item.id}} </text>
+        <text> name：{{item.name}} </text>
+    </block>
+</view>
+```
+
+js：
+
+```javascript
+Page({
+    data: {
+        list: [{
+            id: '001',
+            name: '微信小程序'
+        }, {
+            id: '002',
+            name: 'uniApp'
+        }, {
+            id: '003',
+            name: 'typeScript'
+        }, {
+            id: '004',
+            name: 'vue3'
+        }]
+    }
+})
+```
+
 
 
