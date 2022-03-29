@@ -29,5 +29,10 @@ Page({
     wx.navigateTo({
       url: '../networkRequest/networkRequest',
     })
+  },
+  skipLifeCycle() {
+    wx.navigateTo({
+      url: '../pageLifeCycle/pageLifeCycle',
+    })
   }
 })

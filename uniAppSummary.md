@@ -561,3 +561,62 @@ Page({
 
    1. 使用 Promise 封装 wx.request；
    2. 使用 async 和 await 简化 Promise 操作。
+
+### 4.7 生命周期
+
+#### 4.7.1 App 生命周期
+
+在 app.js 中调用，主要是：
+
+1.  `onLaunch`：小程序初始化完成，全局只触发一次。
+2.  `onShow`：小程序启动时，或从后台进入前台。
+3.  `onHide`：小程序从前台进入后台时执行。
+4.  `onError`：小程序运行脚本出错或者 api 调用失败时执行，会带上错误信息。
+5.  `onPageNotFound`：小程序页面不存在时执行。
+
+==执行顺序==：`onLaunch` => `onShow` => `onHide` => `onError` => `onPageNotFound`
+
+#### 4.7.2 Pages 生命周期
+
+Pages 生命周期主要是指各个文件对应的 js 中的生命周期，主要是：
+
+1.  `onLoad`：页面加载时执行，只执行一次。
+2.  `onReady`：页面初次渲染时执行，只执行一次。
+3.  `onShow`：页面展示时执行，执行多次。
+4.  `onHide`：页面隐藏，从前台进入后台时执行。
+5.  `onUnload`：页面卸载时执行。
+
+==执行顺序==：`onLoad` => `onShow` => `onReady` => `onHide`
+
+#### 4.7.3 运行机制
+
+##### 热启动：
+
+指的是小程序启动成功后，点击左上角的 " × " 或按下 home 键离开小程序，小程序并没有直接被销毁，而是进入了后台运行机制中，当在一定时间内再次打开该小程序时，小程序直接从后台进入前台，重新渲染页面，这个过程就是热启动。
+
+##### 冷启动：
+
+指的是小程序从未被打开，【初次加载时】或【卸载小程序后或被微信自动销毁后】，再次重新加载进入小程序，这个过程就是冷启动。
+
+小程序只有在冷启动的时候，才会触发 onLaunch 生命钩子。
+
+#### 4.7.4 小程序的一辈子
+
+==打开小程序==：`(App) onLaunch` => `(App) onShow` => `(Pages) onLoad` => `(Pages) onShow` => `(Pages) onReady`
+
+==进入下一个页面==：`(Pages) onHide` => `(Next) onLoad` => `(Next) onReady`  
+
+==返回上一个页面==：`(cur) onUnload` => `(pre) onShow`
+
+==离开小程序==：`(App) onHide`
+
+==再次进入==：小程序未被销毁：从`(App) onShow`开始执行；小程序被销毁：从`(App) onLaunch`开始执行。
+
+
+
+
+
+
+
+
+
