@@ -34,5 +34,10 @@ Page({
     wx.navigateTo({
       url: '../pageLifeCycle/pageLifeCycle',
     })
+  },
+  skipComponentsCode() {
+    wx.navigateTo({
+      url: '../componentsCode/componentsCode',
+    })
   }
 })

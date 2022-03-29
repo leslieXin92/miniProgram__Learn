@@ -80,6 +80,8 @@
 
    ![](https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202203251747621.png)
 
+
+
 ## 二、小程序的内置组件
 
 ### 2.1 view 组件
@@ -184,6 +186,8 @@ wxss：
 <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.duoduwang.com%2Fueditor%2Fphp%2Fupload%2Fimage%2F20200420%2F1587361598595117.jpg&refer=http%3A%2F%2Fwww.duoduwang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650848874&t=ee63576a610c5b875f21583b71c79495" />
 ```
 
+
+
 ## 三、成员管理及发布流程
 
 ### 3.1 成员管理
@@ -202,6 +206,8 @@ wxss：
 2. 上传 - 体验版本
 3. 上传 - 审核版本
 4. 上传 - 线上版本
+
+
 
 ## 四、核心语法
 
@@ -725,5 +731,51 @@ wx.navigateBack({
 2.  以 " = " 分割参数的 key 和 value 。
 3.  以 " & " 来拼接参数。
 
-在 onLoad 钩子中，会收到 options 这个参数，里边有传递过来的参数。
+tips：在 onLoad 钩子中，会收到 options 这个参数，里边有传递过来的参数。
+
+
+
+## 五、组件化编程
+
+### 5.1 创建组件
+
+1.  创建组件：
+
+    1.  根目录创建 `components` 文件夹。
+    2.  创建 `demo` 文件夹。
+    3.  右键【新建 component】。
+
+2.  使用组件：
+
+    1.  在使用组件的页面的 json 文件中注册组件，key 为标签名，value 为 path。
+
+        ```json
+        {
+            "usingComponents": {
+                "demo": "../../components/demo/demo"
+            }
+        }
+        ```
+
+    2.  在该页面的 wxml 中，以注册的 key 为标签名，使用组件。
+
+        ```html
+        <demo> </demo>
+        ```
+
+### 5.2 组件的生命周期
+
+1.  `create`：组件实例刚被创建好，此时还不能调用 setData 。
+2.  `attached`：组件完全初始化完毕，进入页面 dom 树后，绝大数初始化工作可以在这个钩子里进行。
+3.  `detached`：组件离开页面 dom 树后。
+
+tips：组件的生命周期必须被定义在 lifetimes 中，方法必须放到 methods 里。
+
+
+
+
+
+
+
+
 

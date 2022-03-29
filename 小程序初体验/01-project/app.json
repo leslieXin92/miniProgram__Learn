@@ -6,7 +6,8 @@
         "pages/conditionalRender/conditionalRender",
         "pages/listRender/listRender",
         "pages/networkRequest/networkRequest",
-        "pages/pageLifeCycle/pageLifeCycle"
+        "pages/pageLifeCycle/pageLifeCycle",
+        "pages/componentsCode/componentsCode"
     ],
     "window": {
         "backgroundTextStyle": "light",
