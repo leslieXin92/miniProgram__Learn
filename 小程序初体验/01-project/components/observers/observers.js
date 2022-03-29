@@ -27,10 +27,11 @@ Component({
             })
         }
     },
+    // 数据监听器
     observers: {
-        'a,b': function (a, b) {
+        'a,b': function (newA, newB) {
             this.setData({
-                c: a + b
+                c: newA + newB
             })
         }
     }

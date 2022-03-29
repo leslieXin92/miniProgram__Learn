@@ -773,26 +773,61 @@ tips：组件的生命周期必须被定义在 lifetimes 中，方法必须放�
 
 ### 5.3 数据监听器
 
+#### demo：
+
+component.wxml：
+
+```html
+<view> a：{{a}} </view>
+<view> b：{{b}} </view>
+<view> c：{{c}} </view>
+<button type="primary" bindtap="addB"> B++ </button>
+```
+
+component.js：
+
 ```javascript
 Component({
-  attached: function() {
-    this.setData({
-      numberA: 1,
-      numberB: 2,
-    })
-  },
-  observers: {
-    'numberA, numberB': function(numberA, numberB) {
-      // 在 numberA 或者 numberB 被设置时，执行这个函数
-      this.setData({
-        sum: numberA + numberB
-      })
+    // 组件的初始数据
+    data: {
+        a: 0,
+        b: 0,
+        c: 0
+    },
+    // 组件的方法列表
+    methods: {
+        addB() {
+            this.setData({
+                b: this.data.b + 1
+            })
+        }
+    },
+    // 组件的生命周期
+    lifetimes: {
+        attached() {
+            this.setData({
+                a: 1,
+                b: 2
+            })
+        }
+    },
+    // 数据监听器
+    observers: {
+        'a,b': function (newA, newB) {
+            this.setData({
+                c: newA + newB
+            })
+        }
     }
-  }
 })
 ```
 
+#### summary：
 
+1.  数据监听器可以用于监听和响应任何属性和数据字段的变化。
+2.  数据监听器监听的是 setData 涉及到的数据字段，即使这些数据字段的值没有发生变化，数据监听器依然会被触发。
+3.  如果在数据监听器函数中使用 setData 设置本身监听的数据字段，可能会导致死循环，需要特别留意。
+4.  数据监听器和属性的 observer 相比，数据监听器更强大且通常具有更好的性能。
 
 
 
