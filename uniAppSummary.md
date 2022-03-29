@@ -612,9 +612,62 @@ Pages 生命周期主要是指各个文件对应的 js 中的生命周期，主�
 
 ==再次进入==：小程序未被销毁：从`(App) onShow`开始执行；小程序被销毁：从`(App) onLaunch`开始执行。
 
+![](https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202203291403542.png)
 
+### 4.8 pullToRefresh
 
+#### 4.8.1 上拉加载
 
+分页：当列表中数据过多时，一次性加载所有的数据会导致请求过慢，所以前端会使用分页来加载数据。
+
+```javascript
+async onReachBottom() {
+    // 当数据已经请求完了，就不再请求。
+    if (this.data.list.length === this.data.total) {
+        return
+    }
+    // 自增页数
+    this.setData({
+        page: this.data.page + 1
+    })
+    // 发请求获取新数据
+    const data = await getData()
+    // 拼接数据
+    this.setData({
+        list: [...this.data.list, ...data]
+    })
+}
+```
+
+#### 4.8.2 下拉刷新
+
+在 page.json 中开启【下拉刷新】：
+
+```json
+{
+  "backgroundColor": "#cccccc", // 最底层背景颜色
+  "enablePullDownRefresh": true // 开启下拉刷新
+}
+```
+
+在 page.js 中监听：
+
+```javascript
+async onPullDownRefresh() {
+    // 1.重置页数
+    this.setData({
+        page: 1
+    })
+    // 2.获取最新的数据
+    const data = await getData()
+    // 3.替换旧数据
+    this.setData({
+        list: data
+    })
+    // 4.关闭下拉刷新的动作 (在真机中，下拉刷新的动作不会自动关闭)
+    wx.stopPullDownRefresh()
+},
+```
 
 
 

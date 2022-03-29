@@ -1,6 +1,4 @@
 <view> {{onLoadMsg}} </view>
 <view> {{onReadyMsg}} </view>
 <view> {{onShowMsg}} </view>
-<view> {{onPullDownRefreshMsg}} </view>
-<view> {{onReachBottomMsg}} </view>
 <view> {{onShareAppMessageMsg}} </view>
