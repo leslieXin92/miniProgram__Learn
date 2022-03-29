@@ -7,7 +7,8 @@
         "pages/listRender/listRender",
         "pages/networkRequest/networkRequest",
         "pages/pageLifeCycle/pageLifeCycle",
-        "pages/componentsCode/componentsCode"
+        "pages/componentsCode/componentsCode",
+        "pages/observers/observers"
     ],
     "window": {
         "backgroundTextStyle": "light",

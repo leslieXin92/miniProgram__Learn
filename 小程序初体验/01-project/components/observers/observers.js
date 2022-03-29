@@ -20,18 +20,11 @@ Component({
 
     // 组件的生命周期
     lifetimes: {
-        created() {
-            // console.log('created')
-        },
         attached() {
-            // console.log('attached')
             this.setData({
                 a: 1,
                 b: 2
             })
-        },
-        detached() {
-            // console.log('dateched')
         }
     },
     observers: {

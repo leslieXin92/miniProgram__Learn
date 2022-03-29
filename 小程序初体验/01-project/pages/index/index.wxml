@@ -7,4 +7,5 @@
 	<button type="primary" bindtap="skipDataRequest"> 网络请求 </button>
 	<button type="primary" bindtap="skipLifeCycle"> 页面的生命周期 </button>
 	<button type="primary" bindtap="skipComponentsCode"> 组件的生命周期 </button>
+	<button type="primary" bindtap="skipObervers"> 数据监听器 </button>
 </view>

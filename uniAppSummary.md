@@ -771,7 +771,26 @@ tips：在 onLoad 钩子中，会收到 options 这个参数，里边有传递�
 
 tips：组件的生命周期必须被定义在 lifetimes 中，方法必须放到 methods 里。
 
+### 5.3 数据监听器
 
+```javascript
+Component({
+  attached: function() {
+    this.setData({
+      numberA: 1,
+      numberB: 2,
+    })
+  },
+  observers: {
+    'numberA, numberB': function(numberA, numberB) {
+      // 在 numberA 或者 numberB 被设置时，执行这个函数
+      this.setData({
+        sum: numberA + numberB
+      })
+    }
+  }
+})
+```
 
 
 

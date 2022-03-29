@@ -1,0 +1,4 @@
+<view> a：{{a}} </view>
+<view> b：{{b}} </view>
+<view> c：{{c}} </view>
+<button type="primary" bindtap="addB"> B++ </button>

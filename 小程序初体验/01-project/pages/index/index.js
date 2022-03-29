@@ -39,5 +39,10 @@ Page({
     wx.navigateTo({
       url: '../componentsCode/componentsCode',
     })
+  },
+  skipObervers() {
+    wx.navigateTo({
+      url: '../observers/observers',
+    })
   }
 })
