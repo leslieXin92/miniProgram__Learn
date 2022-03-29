@@ -669,7 +669,61 @@ async onPullDownRefresh() {
 },
 ```
 
+### 4.9 页面跳转
 
+#### 4.9.1 声明式导航
 
+跳转到【tabbar 页面】：
 
+```html
+<navigator open-type="switchTab" url="/pages/xxx/xxx"> skip </navigator>
+```
+
+跳转到【非 tabbar 页面】：
+
+```html
+<navigator url="/pages/xxx/xxx"> skip </navigator>
+```
+
+回退：
+
+```html
+<navigator open-type="navigateBack"> back </navigator>
+```
+
+#### 4.9.2 编程式导航
+
+跳转到【tabbar 页面】：
+
+```javascript
+wx.switchTab({
+    url: '/pages/xxx/xxx'
+})
+```
+
+跳转到【非 tabbar 页面】：
+
+```javascript
+wx.navigateTo({
+    url: '/pages/xxx/xxx'
+})
+```
+
+回退：
+
+```javascript
+wx.navigateBack({
+    delta: 1 // 回退一步
+})
+```
+
+### 4.10 导航传参
+
+小程序的导航传参遵循 GET 请求的标准：
+
+1.  以 " ? " 分割 url 和参数。
+2.  以 " = " 分割参数的 key 和 value 。
+3.  以 " & " 来拼接参数。
+
+在 onLoad 钩子中，会收到 options 这个参数，里边有传递过来的参数。
 
