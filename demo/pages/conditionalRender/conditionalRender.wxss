@@ -1,9 +1,0 @@
-.box {
-    margin: 30px;
-}
-
-input {
-    width: 50vw;
-    height: 30px;
-    outline: 1px solid saddlebrown;
-}

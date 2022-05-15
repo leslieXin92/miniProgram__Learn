@@ -1,8 +1,0 @@
-button {
-    margin: 20px 0;
-}
-
-.resBox {
-    margin: 30px;
-    font-size: large;
-}

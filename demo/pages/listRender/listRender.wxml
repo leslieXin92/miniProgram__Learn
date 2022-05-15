@@ -1,7 +1,0 @@
-<view class="list">
-    <block wx:for="{{list}}" wx:key="id">
-        <text class="first"> index：{{index}} </text>
-        <text> id：{{item.id}} </text>
-        <text> name：{{item.name}} </text>
-    </block>
-</view>
